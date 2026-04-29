@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-slate-900: #0F172A;
+  --color-cyan-500: #06B6D4;
+  --color-violet-500: #8B5CF6;
+
+  /* Neumorphic Dark Theme Shadows for bg-slate-900 (#0f172a) */
+  --shadow-neo: 8px 8px 16px #080c16, -8px -8px 16px #16223e;
+  --shadow-neo-sm: 4px 4px 8px #080c16, -4px -4px 8px #16223e;
+  --shadow-neo-inner: inset 4px 4px 8px #080c16, inset -4px -4px 8px #16223e;
+}
+
+@layer base {
+  :root {
+    --bg-base: #0F172A;
+    --primary: #06B6D4;
+    --secondary: #8B5CF6;
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+    --surface: #1E293B;
+    --surface-hover: #334155;
+    --border: #334155;
+  }
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
