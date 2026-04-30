@@ -56,7 +56,7 @@ export function Navbar() {
             <Link
               key={link.to}
               to={link.to}
-              className="text-xs font-semibold tracking-widest uppercase text-slate-400 hover:text-cyan-400 focus:text-cyan-400 transition-colors"
+              className="text-xs font-semibold tracking-widest uppercase text-slate-400 hover:text-cyan-400 focus:text-cyan-400 transition-all duration-300 hover:scale-105 active:scale-95"
             >
               {link.label}
             </Link>
@@ -64,7 +64,7 @@ export function Navbar() {
           <div className="w-[1px] h-4 bg-slate-800 shadow-neo-inner"></div>
           <button
             onClick={toggleLang}
-            className="flex items-center space-x-2 text-slate-400 hover:text-cyan-400 transition-colors p-2 rounded-full active:shadow-neo-inner hover:shadow-neo-sm"
+            className="flex items-center space-x-2 text-slate-400 hover:text-cyan-400 transition-all duration-300 p-2 rounded-full active:shadow-neo-inner hover:shadow-neo-sm hover:scale-110 active:scale-90"
             aria-label="Toggle Language"
           >
             <Globe className="w-4 h-4" />

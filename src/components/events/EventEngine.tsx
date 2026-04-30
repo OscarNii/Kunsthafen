@@ -37,7 +37,7 @@ export function EventEngine({ events }: EventEngineProps) {
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={cn(
-                "relative px-4 md:px-6 py-2.5 md:py-3 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest outline-none z-10 flex-1 md:flex-none text-center",
+                "relative px-4 md:px-6 py-2.5 md:py-3 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest outline-none z-10 flex-1 md:flex-none text-center transition-all duration-300 hover:scale-105 active:scale-95",
                 activeFilter === filter
                   ? "text-cyan-400"
                   : "text-slate-400 hover:text-slate-200"
@@ -47,7 +47,7 @@ export function EventEngine({ events }: EventEngineProps) {
                 <motion.div
                   layoutId="activeFilterTab"
                   className="absolute inset-0 bg-slate-900 shadow-neo rounded-full -z-10 border border-white/10"
-                  transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                  transition={{ type: "spring", bounce: 0.2, duration: 1.5 }}
                 />
               )}
               <span className="relative z-10">{t(`events.filter.${filter}`)}</span>
@@ -60,7 +60,7 @@ export function EventEngine({ events }: EventEngineProps) {
           <button
             onClick={() => setViewMode("list")}
             className={cn(
-              "relative flex items-center justify-center p-3 rounded-full outline-none z-10",
+              "relative flex items-center justify-center p-3 rounded-full outline-none z-10 transition-all duration-300 hover:scale-110 active:scale-90",
               viewMode === "list" ? "text-cyan-400" : "text-slate-500 hover:text-slate-300"
             )}
             aria-label="List View"
@@ -69,7 +69,7 @@ export function EventEngine({ events }: EventEngineProps) {
               <motion.div
                 layoutId="activeViewMode"
                 className="absolute inset-0 bg-slate-900 shadow-neo rounded-full -z-10 border border-white/10"
-                transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                transition={{ type: "spring", bounce: 0.2, duration: 1.5 }}
               />
             )}
             <LayoutGrid className="w-5 h-5 relative z-10" />
@@ -77,7 +77,7 @@ export function EventEngine({ events }: EventEngineProps) {
           <button
             onClick={() => setViewMode("calendar")}
             className={cn(
-              "relative flex items-center justify-center p-3 rounded-full outline-none z-10",
+              "relative flex items-center justify-center p-3 rounded-full outline-none z-10 transition-all duration-300 hover:scale-110 active:scale-90",
               viewMode === "calendar" ? "text-cyan-400" : "text-slate-500 hover:text-slate-300"
             )}
             aria-label="Calendar View"
@@ -86,7 +86,7 @@ export function EventEngine({ events }: EventEngineProps) {
               <motion.div
                 layoutId="activeViewMode"
                 className="absolute inset-0 bg-slate-900 shadow-neo rounded-full -z-10 border border-white/10"
-                transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                transition={{ type: "spring", bounce: 0.2, duration: 1.5 }}
               />
             )}
             <CalendarIcon className="w-5 h-5 relative z-10" />

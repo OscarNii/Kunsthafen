@@ -3,7 +3,9 @@ import { AppEvent } from "../../types";
 import { format } from "date-fns";
 import { useI18n } from "../../lib/i18n";
 import { cn } from "../../lib/utils";
-import { MapPin, CalendarDays, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { MapPin, CalendarDays, Clock, ChevronLeft, ChevronRight, Share2 } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { ShareModal } from "./ShareModal";
 
 interface EventCardProps {
   event: AppEvent;
@@ -13,7 +15,7 @@ interface EventCardProps {
 export function EventCard({ event, className }: EventCardProps) {
   const { lang, t } = useI18n();
   const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const startDate = new Date(event.startDate);
   const formattedDate = format(startDate, "dd.MM.yyyy");
@@ -24,23 +26,10 @@ export function EventCard({ event, className }: EventCardProps) {
   const scrollTo = (index: number, e?: React.MouseEvent) => {
     e?.preventDefault();
     e?.stopPropagation();
-    if (scrollRef.current && event.images) {
+    if (event.images) {
       if (index < 0) index = event.images.length - 1;
       if (index >= event.images.length) index = 0;
-      
       setActiveIndex(index);
-      const width = scrollRef.current.clientWidth;
-      scrollRef.current.scrollTo({ left: width * index, behavior: 'smooth' });
-    }
-  };
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const width = scrollRef.current.clientWidth;
-      const index = Math.round(scrollRef.current.scrollLeft / width);
-      if (index !== activeIndex) {
-        setActiveIndex(index);
-      }
     }
   };
 
@@ -48,73 +37,68 @@ export function EventCard({ event, className }: EventCardProps) {
     if (!hasMultipleImages) return;
 
     const intervalId = setInterval(() => {
-      setActiveIndex((current) => {
-        const nextIndex = (current + 1) % event.images!.length;
-        if (scrollRef.current) {
-          const width = scrollRef.current.clientWidth;
-          scrollRef.current.scrollTo({ left: width * nextIndex, behavior: 'smooth' });
-        }
-        return nextIndex;
-      });
-    }, 2000);
+      setActiveIndex((current) => (current + 1) % event.images!.length);
+    }, 4000); // Slower interval for slow motion feel
 
     return () => clearInterval(intervalId);
   }, [hasMultipleImages, event.images]);
 
   return (
-    <div className={cn("group cursor-pointer bg-slate-900 border border-white/5 rounded-3xl overflow-hidden shadow-neo hover:shadow-neo-sm transition-all", className)}>
+    <div className={cn("group cursor-pointer bg-slate-900 border border-white/5 rounded-3xl overflow-hidden shadow-neo hover:shadow-neo-lg transition-all duration-1000 hover:scale-[1.02] hover:-translate-y-1 hover:border-white/10", className)}>
       <div className="aspect-[4/3] w-full overflow-hidden relative group/gallery">
         {event.images && event.images.length > 0 ? (
-          <div 
-            ref={scrollRef}
-            onScroll={handleScroll}
-            className="absolute inset-0 flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide hide-scrollbar"
-          >
-            {event.images.map((img, i) => (
-              <div key={i} className="min-w-full h-full snap-center shrink-0 relative overflow-hidden">
-                <img 
-                  src={img} 
-                  alt={`${event.title} - Image ${i + 1}`} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover/gallery:scale-105"
-                />
-              </div>
-            ))}
+          <div className="absolute inset-0 w-full h-full">
+            <motion.div 
+              animate={{ x: `-${activeIndex * 100}%` }}
+              transition={{ type: "spring", stiffness: 20, damping: 20, mass: 2 }} // Very slow, heavy movement
+              className="flex w-full h-full"
+            >
+              {event.images.map((img, i) => (
+                <div key={i} className="min-w-full h-full shrink-0 relative overflow-hidden">
+                  <img 
+                    src={img} 
+                    alt={`${event.title} - Image ${i + 1}`} 
+                    className="w-full h-full object-cover transition-transform duration-3000 group-hover/gallery:scale-110"
+                  />
+                </div>
+              ))}
+            </motion.div>
           </div>
         ) : (
           <img 
             src={event.imageUrl} 
             alt={event.title} 
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-3000 group-hover:scale-110"
           />
         )}
         
         {hasMultipleImages && (
           <>
             {/* Arrows */}
-            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2 opacity-0 group-hover/gallery:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2 opacity-0 group-hover/gallery:opacity-100 transition-opacity duration-1000 pointer-events-none">
               <button 
                 onClick={(e) => scrollTo(activeIndex - 1, e)}
-                className="w-8 h-8 rounded-full bg-slate-900/40 backdrop-blur flex items-center justify-center text-white/70 hover:text-white hover:bg-slate-900/60 pointer-events-auto transition-all"
+                className="w-10 h-10 rounded-full bg-slate-900/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-slate-900/80 hover:scale-110 active:scale-90 pointer-events-auto transition-all duration-500 shadow-neo"
               >
                 <ChevronLeft className="w-5 h-5 ml-[-2px]" />
               </button>
               <button 
                 onClick={(e) => scrollTo(activeIndex + 1, e)}
-                className="w-8 h-8 rounded-full bg-slate-900/40 backdrop-blur flex items-center justify-center text-white/70 hover:text-white hover:bg-slate-900/60 pointer-events-auto transition-all"
+                className="w-10 h-10 rounded-full bg-slate-900/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-slate-900/80 hover:scale-110 active:scale-90 pointer-events-auto transition-all duration-500 shadow-neo"
               >
                 <ChevronRight className="w-5 h-5 mr-[-2px]" />
               </button>
             </div>
 
             {/* Dots */}
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-1.5 opacity-0 group-hover/gallery:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-1.5 opacity-0 group-hover/gallery:opacity-100 transition-opacity duration-1000 pointer-events-none">
               {event.images!.map((_, i) => (
                 <button 
                   key={i} 
                   onClick={(e) => scrollTo(i, e)}
                   aria-label={`Go to slide ${i + 1}`}
                   className={cn(
-                    "w-1.5 h-1.5 rounded-full shadow-sm pointer-events-auto transition-all duration-300",
+                    "w-1.5 h-1.5 rounded-full shadow-sm pointer-events-auto transition-all duration-1000",
                     i === activeIndex ? "bg-cyan-400 w-3" : "bg-white/50 hover:bg-white/80"
                   )}
                 />
@@ -135,10 +119,22 @@ export function EventCard({ event, className }: EventCardProps) {
             </span>
           </div>
         )}
+
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setIsShareModalOpen(true);
+          }}
+          className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-slate-900/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-cyan-400 hover:bg-slate-900/80 hover:scale-110 active:scale-90 transition-all duration-500 shadow-neo z-20"
+          aria-label="Share Event"
+        >
+          <Share2 className="w-5 h-5" />
+        </button>
       </div>
       
       <div className="p-6 relative z-10 bg-slate-900 pointer-events-none">
-        <h3 className="font-bold text-xl leading-tight mb-3 text-slate-100 group-hover:text-cyan-400 transition-colors">
+        <h3 className="font-bold text-xl leading-tight mb-3 text-slate-100 group-hover:text-cyan-400 transition-colors duration-1000">
           {event.title}
         </h3>
         
@@ -163,6 +159,11 @@ export function EventCard({ event, className }: EventCardProps) {
           )}
         </div>
       </div>
+      <ShareModal 
+        event={event} 
+        isOpen={isShareModalOpen} 
+        onClose={() => setIsShareModalOpen(false)} 
+      />
     </div>
   );
 }

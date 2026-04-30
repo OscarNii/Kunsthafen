@@ -42,7 +42,7 @@ export function Home() {
           <div className="mt-16 transform skew-x-6 relative z-20">
              <Link 
               to="/programm" 
-              className="inline-flex items-center space-x-3 bg-slate-900 border border-white/5 text-cyan-400 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-neo hover:shadow-neo-sm active:shadow-neo-inner transition-all"
+              className="inline-flex items-center space-x-3 bg-slate-900 border border-white/5 text-cyan-400 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-neo hover:shadow-neo-lg active:shadow-neo-inner transition-all hover:scale-105 active:scale-95 hover:border-cyan-500/30"
             >
               <span>{t("nav.programm")}</span>
               <ArrowRight className="w-4 h-4" />
@@ -60,7 +60,7 @@ export function Home() {
               Kunsthafen is a versatile space blending brutalist architecture with fluid artistic expressions. 
               We host exhibitions, workshops, and immersive performances year-round.
             </p>
-            <Link to="/about" className="text-violet-400 hover:text-violet-300 inline-flex items-center space-x-2 text-sm uppercase tracking-widest font-semibold pb-1 border-b border-violet-400/30 hover:border-violet-300 transition-all">
+            <Link to="/about" className="text-violet-400 hover:text-violet-300 inline-flex items-center space-x-2 text-sm uppercase tracking-widest font-semibold pb-1 border-b border-violet-400/30 hover:border-violet-300 transition-all hover:scale-105 active:scale-95 origin-left">
               <span>{t("events.read_more")}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>

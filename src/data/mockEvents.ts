@@ -89,5 +89,53 @@ export const MOCK_EVENTS: AppEvent[] = [
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
     ],
     location: "Seminar Room B",
+  },
+  {
+    id: "e6",
+    title: "Kinetic Sculptures in Motion",
+    description: "A performance where robotic installations interact with human dancers in a choreographed mechanical ballet.",
+    type: "performance",
+    startDate: setHours(setMinutes(addDays(today, 10), 0), 19).toISOString(),
+    endDate: setHours(setMinutes(addDays(today, 10), 0), 21).toISOString(),
+    imageUrl: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1542385151-efd9000785a0?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?q=80&w=1000&auto=format&fit=crop"
+    ],
+    location: "Main Hall",
+  },
+  {
+    id: "e7",
+    title: "Cyberpunk Soundscapes",
+    description: "An immersive electronic music experience with reactive visuals and high-fidelity spatial audio.",
+    type: "performance",
+    startDate: setHours(setMinutes(addDays(today, 12), 30), 21).toISOString(),
+    endDate: setHours(setMinutes(addDays(today, 13), 0), 0).toISOString(),
+    imageUrl: "https://images.unsplash.com/photo-1514525253344-762272821362?q=80&w=1000&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1514525253344-762272821362?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1493225457124-a1a2a5f564ab?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop"
+    ],
+    location: "The Black Box",
+  },
+  {
+    id: "e8",
+    title: "The Void - Immersive Theater",
+    description: "A site-specific theater piece where the audience moves through the dark corridors of the Kunsthafen.",
+    type: "performance",
+    startDate: setHours(setMinutes(addDays(today, 16), 0), 22).toISOString(),
+    endDate: setHours(setMinutes(addDays(today, 16), 0), 23).toISOString(),
+    imageUrl: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1000&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1534398079543-7ae6d016b86a?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop"
+    ],
+    location: "Underground Vaults",
   }
 ];

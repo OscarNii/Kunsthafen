@@ -93,24 +93,31 @@ export function EventCalendarView({ events }: EventCalendarViewProps) {
           className="grid grid-cols-7 auto-rows-[130px] bg-white/5 gap-[1px]"
         >
           {days.map((day, idx) => {
-          const dayEvents = events.filter(e => isSameDay(new Date(e.startDate), day));
-          
-          return (
-            <div
-              key={day.toString() + idx}
-              className={cn(
-                "p-3 bg-slate-900 relative transition-colors overflow-hidden group",
-                !isSameMonth(day, monthStart) ? "opacity-40" : "hover:bg-slate-800/40"
-              )}
-            >
-              <div className="flex justify-end mb-2">
-                <span className={cn(
-                  "w-8 h-8 flex items-center justify-center text-sm font-medium rounded-full",
-                  isToday(day) ? "bg-slate-900 shadow-neo-inner text-cyan-400 font-bold border border-white/5" : "text-slate-400"
-                )}>
-                  {format(day, "d")}
-                </span>
-              </div>
+            const dayEvents = events.filter(e => isSameDay(new Date(e.startDate), day));
+            const hasEvents = dayEvents.length > 0;
+            const isCurrentMonth = isSameMonth(day, monthStart);
+            
+            return (
+              <div
+                key={day.toString() + idx}
+                className={cn(
+                  "p-3 bg-slate-900 relative transition-all duration-500 overflow-hidden group",
+                  !isCurrentMonth ? "opacity-40" : "hover:bg-slate-800/40",
+                  hasEvents && isCurrentMonth && "bg-cyan-500/[0.03] shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)]"
+                )}
+              >
+                {hasEvents && isCurrentMonth && (
+                  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent opacity-50" />
+                )}
+                <div className="flex justify-end mb-2">
+                  <span className={cn(
+                    "w-8 h-8 flex items-center justify-center text-sm font-medium rounded-full transition-all duration-500",
+                    isToday(day) ? "bg-slate-900 shadow-neo-inner text-cyan-400 font-bold border border-white/5" : "text-slate-400",
+                    hasEvents && isCurrentMonth && !isToday(day) && "text-slate-200"
+                  )}>
+                    {format(day, "d")}
+                  </span>
+                </div>
               
               <div className="flex flex-col space-y-1 overflow-y-auto max-h-[70px] no-scrollbar">
                 {dayEvents.map(event => (

@@ -35,7 +35,7 @@ export function Vermietung() {
           </div>
           <button 
             type="button"
-            className="w-full bg-slate-900 shadow-neo hover:shadow-neo-sm active:shadow-neo-inner border border-white/5 text-cyan-400 rounded-2xl px-6 py-4 font-bold uppercase tracking-widest transition-all flex items-center justify-center space-x-2 mt-4"
+            className="w-full bg-slate-900 shadow-neo hover:shadow-neo-lg active:shadow-neo-inner border border-white/5 text-cyan-400 rounded-2xl px-6 py-4 font-bold uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center space-x-2 mt-4 hover:border-cyan-500/30"
           >
             <span>Request Quote</span>
             <ArrowRight className="w-5 h-5" />
