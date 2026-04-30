@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 import FlipText from "../components/ui/flip-text";
 import { ImageTrail } from "../components/ui/image-trail";
+import { BackgroundCarousel } from "../components/ui/background-carousel";
 import { EventCard } from "../components/events/EventCard";
 import { MOCK_EVENTS } from "../data/mockEvents";
 
@@ -14,6 +15,13 @@ const trailImages = [
   "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 ];
 
+const carouselImages = [
+  "https://images.unsplash.com/photo-1471478331149-c72f17e33c73?q=80&w=2338&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1652249418530-f5efa38f9d06?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+];
+
 export function Home() {
   const { t } = useI18n();
   const upcomingEvents = MOCK_EVENTS.filter(e => new Date(e.startDate) >= new Date())
@@ -21,11 +29,12 @@ export function Home() {
     .slice(0, 3);
 
   return (
-    <div>
+    <div className="relative">
       {/* Hero Section - Editorial layout from design recipe */}
-      <ImageTrail images={trailImages} distance={80} className="min-h-[80vh]">
-        <section className="h-full flex flex-col justify-center px-6 max-w-7xl mx-auto relative mb-20">
-          <div className="title-wrapper transform -skew-x-6 relative z-10 pointer-events-none">
+      <ImageTrail images={trailImages} distance={80} className="min-h-[80vh] isolate">
+        <BackgroundCarousel images={carouselImages} blur="blur-md" opacity={0.8} />
+        <section className="h-full flex flex-col justify-center px-6 max-w-7xl mx-auto relative mb-20 z-10">
+          <div className="title-wrapper transform -skew-x-6 relative z-20 pointer-events-none">
             <h1 className="font-bold text-[12vw] md:text-[10vw] leading-[0.85] tracking-tighter text-white uppercase bg-clip-text text-transparent bg-gradient-to-br from-white to-slate-400">
               <FlipText word="KUNST" />
               <FlipText word="HAFEN" />
@@ -36,10 +45,10 @@ export function Home() {
           </div>
           
           {/* Abstract background shapes */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/20 blur-[100px] rounded-full -z-10 mix-blend-screen pointer-events-none" />
-          <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-violet-900/20 blur-[120px] rounded-full -z-10 mix-blend-screen pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/20 blur-[100px] rounded-full z-0 mix-blend-screen pointer-events-none" />
+          <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-violet-900/20 blur-[120px] rounded-full z-0 mix-blend-screen pointer-events-none" />
 
-          <div className="mt-16 transform skew-x-6 relative z-20">
+          <div className="mt-16 transform skew-x-6 relative z-30">
              <Link 
               to="/programm" 
               className="inline-flex items-center space-x-3 bg-slate-900 border border-white/5 text-cyan-400 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest shadow-neo hover:shadow-neo-lg active:shadow-neo-inner transition-all hover:scale-105 active:scale-95 hover:border-cyan-500/30"
