@@ -6,30 +6,30 @@ const today = new Date();
 export const MOCK_EVENTS: AppEvent[] = [
   {
     id: "e1",
-    title: "Light & Space Exhibition",
-    description: "A profound exploration of minimal spaces and neon lighting, questioning the boundaries of perception.",
+    title: "VIERACT",
+    description: "A profound exploration of minimal muzik and neon lighting, questioning the boundaries of perception.",
     type: "exhibition",
     startDate: setHours(setMinutes(addDays(today, 2), 0), 10).toISOString(),
     endDate: setHours(setMinutes(addDays(today, 10), 0), 18).toISOString(),
-    imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1000&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     images: [
-      "https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1000&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1507676184212-d0330a15183c?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1518991316538-23c21cb03598?q=80&w=1000&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1518991316538-23c21cb03598?q=80&w=1000&auto=format&fit=crop" 
     ],
     location: "Main Gallery",
   },
   {
     id: "e2",
-    title: "Experimental Typography Workshop",
-    description: "Join us for a hands-on workshop creating brutalist fonts with traditional and digital tools.",
+    title: "ABGESAGT/ CANCELD: MISSILES",
+    description: "Das Musikwochenende mit der Reihe Missilies und Instant Music Club, ist eine von Musiker*innen aus dem Kunsthaus Rhenania organisierte Veranstaltung. Sie findet jeden 2. Monat im Kunsthafen statt.",
     type: "workshop",
     startDate: setHours(setMinutes(addDays(today, 5), 30), 14).toISOString(),
     endDate: setHours(setMinutes(addDays(today, 5), 30), 17).toISOString(),
-    imageUrl: "https://images.unsplash.com/photo-1621077742111-eec71c26fbb6?q=80&w=1000&auto=format&fit=crop",
+    imageUrl: "https://kunsthafen.com/wp-content/uploads/2025/01/Missiles-2048x2012.jpg",
     images: [
-      "https://images.unsplash.com/photo-1621077742111-eec71c26fbb6?q=80&w=1000&auto=format&fit=crop",
+      "https://kunsthafen.com/wp-content/uploads/2025/01/Missiles-2048x2012.jpg",
       "https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=1000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1620023474771-b20f18d7f722?q=80&w=1000&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1625902148154-8c823019808e?q=80&w=1000&auto=format&fit=crop"

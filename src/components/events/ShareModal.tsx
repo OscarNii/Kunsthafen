@@ -18,7 +18,13 @@ export function ShareModal({ event, isOpen, onClose }: ShareModalProps) {
   const shareOptions = [
     {
       name: "Twitter",
-      icon: Twitter,
+      _icon: Twitter,
+      get icon() {
+        return this._icon;
+      },
+      set icon(value) {
+        this._icon = value;
+      },
       color: "hover:text-[#1DA1F2]",
       onClick: () => {
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`, "_blank");
