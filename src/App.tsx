@@ -12,6 +12,7 @@ import { Programm } from "./pages/Programm";
 import { About } from "./pages/About";
 import { Vermietung } from "./pages/Vermietung";
 import { Gallery } from "./pages/Gallery";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <BrowserRouter>
         <div className="min-h-screen flex flex-col bg-slate-900 text-slate-100">
           <Navbar />
+          <Analytics />
           <main className="flex-grow pt-20">
             <Routes>
               <Route path="/" element={<Home />} />
