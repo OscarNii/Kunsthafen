@@ -75,14 +75,12 @@ export function Footer() {
               >
                 {t("nav.programm")}
               </Link>
-              <a
-                href="https://kunsthafen.com/kontakt/"
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                to="/vermietung"
                 className="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-xs font-bold uppercase tracking-[0.3em] text-slate-200 transition hover:border-violet-400/40 hover:text-white"
               >
                 {t("footer.contact")}
-              </a>
+              </Link>
             </div>
 
             <div className="mt-12 grid gap-4 sm:grid-cols-3">
@@ -137,7 +135,7 @@ export function Footer() {
               </motion.div>
 
               <a
-                href="https://kunsthafen.com/kontakt/"
+                href="#"
                 target="_blank"
                 rel="noreferrer"
                 className="absolute z-10 flex h-36 w-36 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-cyan-500 to-violet-500 px-6 text-center text-xs font-black uppercase tracking-[0.3em] text-white shadow-[0_18px_60px_rgba(6,182,212,0.3)] transition hover:scale-105"
