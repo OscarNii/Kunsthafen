@@ -11,16 +11,22 @@ interface FlipTextProps {
 
 export default function FlipText({
   word,
-  duration = 1.5,
-  delayMultiple = 0.1,
+  duration = 1.2,
+  delayMultiple = 0.08,
   framerProps = {
-    hidden: { rotateX: 0 },
-    visible: { rotateX: 360 },
+    hidden: { rotateX: -90, opacity: 0 },
+    visible: { rotateX: 0, opacity: 1 },
   },
   className,
 }: FlipTextProps) {
   return (
-    <div className="flex justify-start">
+    <div 
+      className="flex justify-start will-change-transform"
+      style={{
+        perspective: "1000px",
+        transformStyle: "preserve-3d"
+      }}
+    >
       <AnimatePresence mode="wait">
         {word.split("").map((char, i) => (
           <motion.span
@@ -33,8 +39,15 @@ export default function FlipText({
               duration, 
               delay: i * delayMultiple,
               repeat: Infinity,
-              repeatDelay: 3,
+              repeatDelay: 2,
               ease: "easeInOut"
+            }}
+            style={{
+              backfaceVisibility: "hidden",
+              transformStyle: "preserve-3d",
+              WebkitBackfaceVisibility: "hidden",
+              WebkitTransformStyle: "preserve-3d",
+              willChange: "transform"
             }}
             className={cn("origin-center drop-shadow-sm inline-block", className)}
           >

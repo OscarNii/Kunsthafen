@@ -32,13 +32,14 @@ export function BackgroundCarousel({
           key={index}
           src={images[index]}
           alt={`background-${index}`}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: opacity, scale: 1.15 }}
-          exit={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: opacity }}
+          exit={{ opacity: 0 }}
           transition={{ 
-            duration: 2, 
+            duration: 1.2, 
             ease: "easeInOut" 
           }}
+          style={{ willChange: "opacity" }}
           className={`absolute inset-0 w-full h-full object-cover ${blur}`}
         />
       </AnimatePresence>

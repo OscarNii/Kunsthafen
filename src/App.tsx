@@ -11,6 +11,7 @@ import { Home } from "./pages/Home";
 import { Programm } from "./pages/Programm";
 import { About } from "./pages/About";
 import { Vermietung } from "./pages/Vermietung";
+import { Gallery } from "./pages/Gallery";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <main className="flex-grow pt-20">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/programm" element={<Programm />} />
               <Route path="/about" element={<About />} />
               <Route path="/vermietung" element={<Vermietung />} />
@@ -32,4 +34,3 @@ export default function App() {
     </I18nProvider>
   );
 }
-

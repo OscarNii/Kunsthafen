@@ -40,18 +40,28 @@ export function About() {
       <section className="py-24 border-b border-white/5 shadow-neo relative z-10 bg-slate-900">
         <div className="max-w-7xl mx-auto px-6">
           <h1 className="font-bold text-[8vw] leading-[0.85] tracking-tighter text-white uppercase text-center mb-12">
-            THE<br />VISION
+            KONZEPT
           </h1>
           
           <div className="max-w-3xl mx-auto space-y-8 text-lg text-slate-300 leading-relaxed font-light mt-16 text-center">
             <p>
-              Kunsthafen is more than a gallery. It is an experimental laboratory where brutalist 
-              architecture meets fluid, ever-changing contemporary art.
+              Das Programm des KUNSTHAFENs spiegelt die Vielschichtigkeit zeitgenössischer kultureller Strömungen wider. Hier werden verschiedene Kunst- und Kultursparten wie Musik, Theater, Literatur und Bildende Kunst zusammengebracht, um die Diversität des künstlerischen Schaffens zu zeigen und neue Verbindungen zwischen den Disziplinen zu ermöglichen. Die programmatische Kuration orientiert sich dabei am Cutting-Edge- Prinzip, das im Kontext von Kunst und Kultur als progressiv und experimentell verstanden wird.  
             </p>
             <p>
-              Founded in 2024, our mission is to provide an accessible platform for emerging artists, 
-              fostering dialogue across disciplines through exhibitions, immersive performances, and 
-              hands-on workshops.
+              Der KUNSTHAFEN ist ein Experimentierfeld für Kunst und Kultur: facettenreich, alters- und spartenunabhängig. Er ist ein Ort für ALLE.
+            </p>
+            <p>
+              Besonders wichtig ist es dem KUNSTHAFEN, jungen und/oder (noch) unbekannten Künstler*innen Raum zu bieten. Im Vordergrund stehen dabei künstlerische Qualität und Originalität, nicht der kommerzielle Erfolg. Der KUNSTHAFEN bietet FLINTA*, LGBTIQ*, POC und anderen gesellschaftlich marginalisierten Gruppen sowie deren Communities einen Safer Space.
+            </p>
+            <p>
+              Im Programm des KUNSTHAFENs findet ihr Projekte von und mit Künstler*innen, die ihre Ateliers im Kunsthaus Rhenania haben (🔴 ), Kooperationsprojekte, die durch das Kulturamt der Stadt Köln gefördert werden (🔵 ), sowie eine Auswahl externer Projekte, die von der Programmleitung kuratiert werden (⚪ ).
+              <p>
+                Initiator*innen
+              </p>
+              <p>
+                Der KUNSTHAFEN wurde von Christian Wagner, Lenah Flaig und Nadine Kiala konzipiert. In Kooperation mit dem Kulturamt der Stadt Köln wird die Halle des Kunsthaus Rhenania seit September 2020 unter dem Namen KUNSTHAFEN geführt. 
+Nach Ausstieg von Christian (2021)und Lenah(2024) leitet Nadine den KUNSTHAFEN eigenständig.
+              </p>
             </p>
           </div>
         </div>
